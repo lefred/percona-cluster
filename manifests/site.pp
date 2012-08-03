@@ -28,3 +28,13 @@ node percona3 {
 	Class['percona::repository'] -> Class['percona::cluster']
 }
 
+node percona4 {
+	include percona::repository
+	include percona::server
+	include myhosts
+
+	Class['percona::repository'] -> Class['percona::server']
+	#class {'percona::server::config': perconaserverid => "1" }
+
+}
+

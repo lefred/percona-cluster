@@ -49,5 +49,20 @@ Vagrant::Config.run do |config|
 		percona3_puppet.options = "--verbose"
 	end
   end
+  config.vm.define :percona4 do |percona4_config|
+	percona4_config.vm.box = "centos6"
+	percona4_config.vm.host_name = "percona4"
+	percona4_config.ssh.max_tries = 100
+	#percona3_config.vm.boot_mode = :gui
+	percona4_config.vm.customize ["modifyvm", :id, "--memory", "256"]
+	percona4_config.vm.network :hostonly, "192.168.70.5"
+	percona4_config.vm.provision :puppet do |percona4_puppet|
+		percona4_puppet.pp_path = "/tmp/vagrant-puppet"
+		percona4_puppet.manifests_path = "manifests"
+		percona4_puppet.module_path = "modules"
+		percona4_puppet.manifest_file = "site.pp"
+		percona4_puppet.options = "--verbose"
+	end
+  end
 
 end
