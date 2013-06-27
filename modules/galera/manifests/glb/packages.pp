@@ -4,7 +4,7 @@ class galera::glb::packages {
 		"glb":
 			provider => rpm,
 			ensure   => installed,
-			source   => "/vagrant/modules/galera/files/glb-0.7.4-3.0.x86_64.rpm",
+			source   => "/vagrant/modules/galera/files/glb-0.7.5-1.x86_64.rpm",
 	}
 	
 }

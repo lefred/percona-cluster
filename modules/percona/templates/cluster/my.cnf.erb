@@ -1,9 +1,13 @@
+[mysqld_safe]
+wsrep_urls=gcomm://192.168.70.2:4567,gcomm://192.168.70.3:4567,gcomm://192.168.70.4:4567,gcomm://
+
 [mysqld]
 datadir=/var/lib/mysql
 user=mysql
 log_error=<%= hostname %>_error.log
 binlog_format=ROW
 wsrep_provider=/usr/lib64/libgalera_smm.so
+<<<<<<< HEAD
 wsrep_cluster_address=gcomm://192.168.70.2,192.168.70.3,192.168.70.4
 wsrep_node_address=<%= ipaddress_eth1 %>
 wsrep_slave_threads=2
@@ -20,6 +24,7 @@ bind-address=<%= ipaddress_eth1 %>
 innodb_file_per_table=1
 
 [mysql]
+user=root
 prompt="<%=hostname %> mysql> "
 
 [sst]

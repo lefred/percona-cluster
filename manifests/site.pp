@@ -23,7 +23,6 @@ node percona2 {
 	include qpress
 
 	Class['percona::repository'] -> Class['qpress'] -> Class['percona::cluster']
-
 }
 
 node percona3 {
