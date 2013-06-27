@@ -5,11 +5,10 @@ Vagrant::Config.run do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.define :percona1 do |percona1_config|
-	percona1_config.vm.box = "centos6"
+	percona1_config.vm.box = "centos63"
 	percona1_config.vm.host_name = "percona1"
 	percona1_config.ssh.max_tries = 100
-	#percona1_config.vm.boot_mode = :gui
-	percona1_config.vm.customize ["modifyvm", :id, "--memory", "256"]
+	percona1_config.vm.customize ["modifyvm", :id, "--memory", "256", "--ioapic", "on"]
 	percona1_config.vm.network :hostonly, "192.168.70.2"
 	percona1_config.vm.provision :puppet do |percona1_puppet|
 		percona1_puppet.pp_path = "/tmp/vagrant-puppet"
@@ -20,11 +19,10 @@ Vagrant::Config.run do |config|
 	end
   end
   config.vm.define :percona2 do |percona2_config|
-	percona2_config.vm.box = "centos6"
+	percona2_config.vm.box = "centos63"
 	percona2_config.vm.host_name = "percona2"
 	percona2_config.ssh.max_tries = 100
-	#percona2_config.vm.boot_mode = :gui
-	percona2_config.vm.customize ["modifyvm", :id, "--memory", "256"]
+	percona2_config.vm.customize ["modifyvm", :id, "--memory", "256", "--ioapic", "on"]
 	percona2_config.vm.network :hostonly, "192.168.70.3"
 	percona2_config.vm.provision :puppet do |percona2_puppet|
 		percona2_puppet.pp_path = "/tmp/vagrant-puppet"
@@ -35,11 +33,10 @@ Vagrant::Config.run do |config|
 	end
   end
   config.vm.define :percona3 do |percona3_config|
-	percona3_config.vm.box = "centos6"
+	percona3_config.vm.box = "centos63"
 	percona3_config.vm.host_name = "percona3"
 	percona3_config.ssh.max_tries = 100
-	#percona3_config.vm.boot_mode = :gui
-	percona3_config.vm.customize ["modifyvm", :id, "--memory", "256"]
+	percona3_config.vm.customize ["modifyvm", :id, "--memory", "256", "--ioapic", "on"]
 	percona3_config.vm.network :hostonly, "192.168.70.4"
 	percona3_config.vm.provision :puppet do |percona3_puppet|
 		percona3_puppet.pp_path = "/tmp/vagrant-puppet"
@@ -49,20 +46,4 @@ Vagrant::Config.run do |config|
 		percona3_puppet.options = "--verbose"
 	end
   end
-  config.vm.define :percona4 do |percona4_config|
-	percona4_config.vm.box = "centos6"
-	percona4_config.vm.host_name = "percona4"
-	percona4_config.ssh.max_tries = 100
-	#percona3_config.vm.boot_mode = :gui
-	percona4_config.vm.customize ["modifyvm", :id, "--memory", "256"]
-	percona4_config.vm.network :hostonly, "192.168.70.5"
-	percona4_config.vm.provision :puppet do |percona4_puppet|
-		percona4_puppet.pp_path = "/tmp/vagrant-puppet"
-		percona4_puppet.manifests_path = "manifests"
-		percona4_puppet.module_path = "modules"
-		percona4_puppet.manifest_file = "site.pp"
-		percona4_puppet.options = "--verbose"
-	end
-  end
-
 end

@@ -13,9 +13,9 @@ class percona::cluster::packages {
                         ensure => "present";
 		"mysql-libs":
 			ensure => "absent";		
-		"Percona-Server-shared-compat":
-			require => [ Yumrepo['percona'], Package['mysql-libs'], Package['MySQL-client'] ],
-			ensure => "installed";
+		#"Percona-Server-shared-compat":
+		#	require => [ Yumrepo['percona'], Package['mysql-libs'], Package['MySQL-client'] ],
+		#	ensure => "installed";
 
         }
 }
