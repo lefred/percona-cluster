@@ -79,9 +79,13 @@ To achieve that, some easy additions to my.cnf are needed. So this is what I add
    
    [xtrabackup]
    compress
+   compact
    parallel=2
+   compress-threads=2
+   rebuild-threads=2
     
-But it is also **mandatory** to have *qpress* (http://www.quicklz.com/) installed and the MySQL datadir must be empty (which is currently very boring).
+But it is also **mandatory** to have *qpress* (http://www.quicklz.com/) installed and the MySQL datadir must be empty (which is currently very boring, see
+https://bugs.launchpad.net/percona-xtrabackup/+bug/1193240).
 
 There are 2 puppet classes performing these actions:
 
@@ -90,15 +94,16 @@ There are 2 puppet classes performing these actions:
 
 This is what you should see in mysql's error log if it worked as expected::
 
-   WSREP_SST: [INFO] Streaming with xbstream (20130627 10:51:18.028)
-   WSREP_SST: [INFO] xbstream requires manual cleanup of data directory before SST - lp:1193240 (20130627 10:51:18.032)
+   WSREP_SST: [INFO] Streaming with xbstream (20130627 13:05:20.991)
+   WSREP_SST: [INFO] xbstream requires manual cleanup of data directory before SST - lp:1193240 (20130627 13:05:20.998)
    ...
-   WSREP_SST: [INFO] Proceeding with SST (20130627 10:51:21.887)
-   WSREP_SST: [INFO] Removing existing ib_logfile files (20130627 10:51:21.889)
-   WSREP_SST: [INFO] Compressed qpress files found (20130627 10:51:21.896)
-   WSREP_SST: [INFO] Removing existing ibdata1 file (20130627 10:51:21.900)
-   WSREP_SST: [INFO] Decompression with 1 threads (20130627 10:51:21.903)
-   WSREP_SST: [INFO] Removing qpress files after decompression (20130627 10:51:21.946)
+   WSREP_SST: [INFO] Proceeding with SST (20130627 13:05:54.335)
+   WSREP_SST: [INFO] Removing existing ib_logfile files (20130627 13:05:54.340)
+   WSREP_SST: [INFO] Index compaction detected (20130627 13:05:54.348)
+   WSREP_SST: [INFO] Rebuilding with 2 threads (20130627 13:05:54.356)
+   WSREP_SST: [INFO] Compressed qpress files found (20130627 13:05:54.364)
+   WSREP_SST: [INFO] Removing existing ibdata1 file (20130627 13:05:54.370)
+   WSREP_SST: [INFO] Decompression with 1 threads (20130627 13:05:54.375)
    
 
 How to setup the environment
