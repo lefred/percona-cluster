@@ -8,7 +8,7 @@ Vagrant::Config.run do |config|
 	percona1_config.vm.box = "centos63"
 	percona1_config.vm.host_name = "percona1"
 	percona1_config.ssh.max_tries = 100
-	percona1_config.vm.customize ["modifyvm", :id, "--memory", "256", "--ioapic", "on"]
+	percona1_config.vm.customize ["modifyvm", :id, "--memory", "2048", "--ioapic", "on", "--cpus", "2"]
 	percona1_config.vm.network :hostonly, "192.168.70.2"
 	percona1_config.vm.provision :puppet do |percona1_puppet|
 		percona1_puppet.pp_path = "/tmp/vagrant-puppet"
@@ -22,7 +22,7 @@ Vagrant::Config.run do |config|
 	percona2_config.vm.box = "centos63"
 	percona2_config.vm.host_name = "percona2"
 	percona2_config.ssh.max_tries = 100
-	percona2_config.vm.customize ["modifyvm", :id, "--memory", "256", "--ioapic", "on"]
+	percona2_config.vm.customize ["modifyvm", :id, "--memory", "2048", "--ioapic", "on", "--cpus", "2"]
 	percona2_config.vm.network :hostonly, "192.168.70.3"
 	percona2_config.vm.provision :puppet do |percona2_puppet|
 		percona2_puppet.pp_path = "/tmp/vagrant-puppet"

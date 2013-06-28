@@ -18,7 +18,7 @@ Requirements
 
 You need : 
 
-* a Centos 6 x86_64 box to use with Vagrant. (64bit is mandatory to compress the xtrabackup stream)
+* a Centos 6 x86_64 box to use with Vagrant. (64 bit is mandatory if you use compression for xtrabackup stream, and you don't want to compile qpress by yourself)
 * VirtualBox - https://www.virtualbox.org/
 * a working Vagrant environment - http://vagrantup.com/
 * an Internet connection for the VM's
@@ -93,7 +93,7 @@ There are 2 puppet classes performing these actions:
 * class percona::cluster::xbstream 
 
 This is what you should see in mysql's error log if it worked as expected::
-
+OO
    WSREP_SST: [INFO] Streaming with xbstream (20130627 13:05:20.991)
    WSREP_SST: [INFO] xbstream requires manual cleanup of data directory before SST - lp:1193240 (20130627 13:05:20.998)
    ...
