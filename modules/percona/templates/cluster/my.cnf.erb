@@ -6,11 +6,12 @@ binlog_format=ROW
 wsrep_provider=/usr/lib64/libgalera_smm.so
 wsrep_cluster_address=gcomm://192.168.90.2,192.168.90.3,192.168.90.4
 wsrep_node_address=<%= ipaddress_eth1 %>
+wsrep_sst_receive_address=<%= ipaddress_eth1 %>:4444
 wsrep_slave_threads=2
 wsrep_cluster_name=LefredPXC
 #wsrep_sst_method=rsync
 wsrep_sst_method=xtrabackup
-wsrep_sst_auth=root:dim0-
+wsrep_sst_auth=root:
 #wsrep_provider_options = "pc.ignore_sb=true;gcache.size=64M"
 wsrep_node_name=<%= hostname %>
 innodb_locks_unsafe_for_binlog=1

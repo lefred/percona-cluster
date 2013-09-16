@@ -7,7 +7,7 @@ class percona::repository {
         "percona":
             descr       => "Percona",
             enabled     => 1,
-            baseurl     => "http://repo.percona.com/centos/$releasever/os/$basearch/",
+            baseurl     => "http://repo.percona.com/testing/centos/$releasever/os/$basearch/",
             gpgcheck    => 0;
  }
 
