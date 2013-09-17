@@ -5,6 +5,10 @@ class percona::cluster::packages {
                         alias => "MySQL-server",
                         require => Yumrepo['percona'],
                         ensure => "installed";
+               # "Percona-XtraDB-Cluster-client.$hardwaremodel":
+               #         alias => "MySQL-client",
+               #         require => Yumrepo['percona'],
+               #         ensure => "installed";
                 "rsync":
                         ensure => "present";
 		"mysql-libs":
