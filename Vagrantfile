@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
         percona1_config.ssh.max_tries = 100
         #percona1_config.vm.boot_mode = :gui
         percona1_config.vm.provider :virtualbox do |percona1_vb|
-                percona1_vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50", "--memory", "1024", "--ioapic", "on", "--cpus", "2"]
+                percona1_vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50", "--memory", "256", "--ioapic", "on", "--cpus", "2"]
         end
         percona1_config.vm.network :private_network, ip: "192.168.90.2"
         percona1_config.vm.provision :puppet do |percona1_puppet|
@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
         percona2_config.ssh.max_tries = 100
         #percona1_config.vm.boot_mode = :gui
         percona2_config.vm.provider :virtualbox do |percona2_vb|
-                percona2_vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50", "--memory", "1024", "--ioapic", "on"]
+                percona2_vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50", "--memory", "256", "--ioapic", "on"]
         end
         percona2_config.vm.network :private_network, ip: "192.168.90.3"
         percona2_config.vm.provision :puppet do |percona2_puppet|
@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
         percona3_config.ssh.max_tries = 100
         #percona1_config.vm.boot_mode = :gui
         percona3_config.vm.provider :virtualbox do |percona3_vb|
-                percona3_vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50", "--memory", "1024", "--ioapic", "on"]
+                percona3_vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50", "--memory", "256", "--ioapic", "on"]
         end
         percona3_config.vm.network :private_network, ip: "192.168.90.4"
         percona3_config.vm.provision :puppet do |percona3_puppet|
