@@ -6,11 +6,10 @@ binlog_format=ROW
 wsrep_provider=/usr/lib64/libgalera_smm.so
 wsrep_cluster_address=gcomm://192.168.90.2,192.168.90.3,192.168.90.4
 wsrep_node_address=<%= ipaddress_eth1 %>
-wsrep_sst_receive_address=<%= ipaddress_eth1 %>:4444
 wsrep_slave_threads=2
 wsrep_cluster_name=LefredPXC
 #wsrep_sst_method=rsync
-wsrep_sst_method=xtrabackup
+wsrep_sst_method=xtrabackup-v2
 wsrep_sst_auth=root:
 #wsrep_provider_options = "pc.ignore_sb=true;gcache.size=64M"
 wsrep_node_name=<%= hostname %>
@@ -19,6 +18,15 @@ innodb_autoinc_lock_mode=2
 innodb_log_file_size=64M
 bind-address=<%= ipaddress_eth1 %>
 innodb_file_per_table=1
+log_slave_updates
+<% if has_variable?("mysql_version") and mysql_version.to_s == "5.6" then %>
+support GTID
+enforce_gtid_consistency=1
+gtid_mode=on
+<% end %>
+
+
+
 
 [mysql]
 user=root
