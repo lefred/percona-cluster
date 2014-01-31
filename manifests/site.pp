@@ -59,3 +59,14 @@ node percona3 {
 	}
 }
 
+node percona4 {
+	include percona::repository
+
+	class {
+                'percona::server':
+                        mysql_version   => "5.5",
+                        ensure          => "running"
+        }
+
+	class {'percona::server::config': perconaserverid => "4" }
+}

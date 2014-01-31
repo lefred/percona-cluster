@@ -51,5 +51,19 @@ Vagrant.configure("2") do |config|
                 percona3_puppet.options = "--verbose"
         end
   end
+  config.vm.define :percona4 do |percona4_config|
+        percona4_config.vm.box = "centos64"
+        percona4_config.vm.hostname = "percona4"
+        percona4_config.vm.provider :virtualbox do |percona4_vb|
+                percona4_vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50", "--memory", "256", "--ioapic", "on"]
+        end
+        percona4_config.vm.network :private_network, ip: "192.168.90.5"
+        percona4_config.vm.provision :puppet do |percona4_puppet|
+                percona4_puppet.manifests_path = "manifests"
+                percona4_puppet.module_path = "modules"
+                percona4_puppet.manifest_file = "site.pp"
+                percona4_puppet.options = "--verbose"
+        end
+  end
 end
 
