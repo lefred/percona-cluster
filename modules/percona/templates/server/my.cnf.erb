@@ -1,0 +1,21 @@
+[mysqld]
+datadir=/var/lib/mysql
+user=mysql
+log_error=<%= hostname %>_error.log
+binlog_format=ROW
+innodb_log_file_size=64M
+bind-address=<%= ipaddress_eth1 %>
+innodb_file_per_table=1
+log_slave_updates
+<% if has_variable?("mysql_version") and mysql_version.to_s == "5.6" then %>
+support GTID
+enforce_gtid_consistency=1
+gtid_mode=on
+<% end %>
+log-bin=<%= hostname %>-bin
+<% if has_variable?("perconaserverid") and perconaserverid.to_s != "undef" then %>server-id=<%= perconaserverid %> <% end %>
+
+[mysql]
+user=root
+prompt="<%=hostname %> mysql> "
+
