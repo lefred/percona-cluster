@@ -14,6 +14,8 @@ node percona1 {
 			bootstrap 	=> True
 	}
 
+	class {'percona::cluster::config': perconaserverid => "1" }
+
 	#class {
 	#	'galera::glb':
 	#		glb_list_backend => "192.168.70.2:3306:1 192.168.70.3:3306:1 192.168.70.4:3306"
@@ -42,6 +44,7 @@ node percona2 {
                         enable          => "true",
                         ensure          => "running"
 	}
+	class {'percona::cluster::config': perconaserverid => "2" }
 }
 
 node percona3 {
@@ -57,6 +60,7 @@ node percona3 {
                         enable          => "true",
                         ensure          => "running"
 	}
+	class {'percona::cluster::config': perconaserverid => "3" }
 }
 
 node percona4 {

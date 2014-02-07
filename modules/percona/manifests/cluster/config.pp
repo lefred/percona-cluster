@@ -1,4 +1,4 @@
-class percona::cluster::config {
+class percona::cluster::config  ($perconaserverid=undef){
 
         $mysql_version          = $percona::cluster::mysql_version
 
