@@ -20,7 +20,7 @@ bind-address=<%= ipaddress_eth1 %>
 innodb_file_per_table=1
 log_slave_updates
 <% if has_variable?("mysql_version") and mysql_version.to_s == "5.6" then %>
-support GTID
+#support GTID
 enforce_gtid_consistency=1
 gtid_mode=on
 <% end %>

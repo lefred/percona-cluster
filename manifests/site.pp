@@ -8,7 +8,7 @@ node percona1 {
 
 	class {
 		'percona::cluster':
-                        mysql_version   => "5.5",
+                        mysql_version   => "5.6",
                         enable          => True,
                         ensure          => "running",
 			bootstrap 	=> True
@@ -38,7 +38,7 @@ node percona2 {
 
 	class {
 		'percona::cluster':
-                        mysql_version   => "5.5",
+                        mysql_version   => "5.6",
                         enable          => "true",
                         ensure          => "running"
 	}
@@ -53,7 +53,7 @@ node percona3 {
 
 	class {
 		'percona::cluster':
-                        mysql_version   => "5.5",
+                        mysql_version   => "5.6",
                         enable          => "true",
                         ensure          => "running"
 	}
@@ -64,7 +64,7 @@ node percona4 {
 
 	class {
                 'percona::server':
-                        mysql_version   => "5.5",
+                        mysql_version   => "5.6",
                         ensure          => "running"
         }
 
